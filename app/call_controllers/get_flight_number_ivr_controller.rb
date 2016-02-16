@@ -56,7 +56,7 @@ class GetFlightNumberIVRController < Adhearsion::IVRController
     RubySpeech::GRXML.draw root: 'fltnum_dtmf', mode: :dtmf, language: 'en-US', tag_format: 'semantics/1.0.2006' do
       rule id: :digit do
         one_of do
-          item { string '0'; tag { string 'out = "1"' } }
+          item { string '0'; tag { string 'out = "0"' } }
           item { string '1'; tag { string 'out = "1"' } }
           item { string '2'; tag { string 'out = "2"' } }
           item { string '3'; tag { string 'out = "3"' } }
