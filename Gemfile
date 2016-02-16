@@ -16,6 +16,8 @@ gem 'adhearsion-ivr', github: 'adhearsion/adhearsion-ivr', branch: 'feature/on_r
 gem 'adhearsion-i18n', github: 'adhearsion/adhearsion-i18n', branch: 'feature/use_formatter'
 gem 'adhearsion-asterisk'
 
+gem 'twitter', '< 5.0'
+
 #
 # Check http://ahnhub.com for a list of plugins you can use in your app.
 # To use them, simply add them here and run `bundle install`.
