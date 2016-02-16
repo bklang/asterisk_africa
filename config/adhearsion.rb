@@ -38,3 +38,11 @@ Adhearsion.config do |config|
   config.platform.media.default_renderer = :unimrcp
   config.adhearsion_asr.recognizer = :unimrcp
 end
+
+Twitter.configure do |config|
+  app_config = Adhearsion.config.app
+  config.consumer_key = app_config.twitter_consumer_key
+  config.consumer_secret = app_config.twitter_consumer_secret
+  config.oauth_token = app_config.twitter_access_token
+  config.oauth_token_secret = app_config.twitter_access_token_secret
+end
