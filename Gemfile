@@ -16,7 +16,15 @@ gem 'adhearsion-ivr', github: 'adhearsion/adhearsion-ivr', branch: 'feature/on_r
 gem 'adhearsion-i18n', github: 'adhearsion/adhearsion-i18n', branch: 'feature/use_formatter'
 gem 'adhearsion-asterisk'
 
+gem 'virginia', github: 'adhearsion/virginia', branch: 'develop'
+
+gem 'reel-rack', '~> 0.2'
+gem 'sinatra', require: false
+gem 'sinatra-contrib', require: false
+
+# External data sources
 gem 'twitter', '< 5.0'
+gem 'savon' # For SOAP APIs
 
 #
 # Check http://ahnhub.com for a list of plugins you can use in your app.

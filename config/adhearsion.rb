@@ -37,6 +37,7 @@ Adhearsion.config do |config|
 
   config.platform.media.default_renderer = :unimrcp
   config.adhearsion_asr.recognizer = :unimrcp
+  config.virginia.host = '10.203.175.1'
 end
 
 Twitter.configure do |config|

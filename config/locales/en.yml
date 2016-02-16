@@ -1,0 +1,14 @@
+---
+en:
+  say_airline:
+    text: "Say the name of your airline"
+  say_flight_number:
+    text: "Say your flight number"
+  say_departure_city:
+    text: "Say the name of the city from which you are departing"
+  flight_is_departing:
+    text: "Your flight is departing"
+  for:
+    text: "for"
+  could_not_find_flight:
+    text: "Sorry, I could not find your flight."

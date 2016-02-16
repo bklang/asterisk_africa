@@ -1,0 +1,14 @@
+---
+it:
+  say_airline:
+    text: "Dimmi il nome della Sua aerolinea"
+  say_flight_number:
+    text: "Dimmi il Suo numero di volo"
+  say_departure_city:
+    text: "Dimmi il nome della città da cui si sta in partenza"
+  flight_is_departing:
+    text: "Il volo è in partenza da"
+  for:
+    text: "da"
+  could_not_find_flight:
+    text: "Mi dispiace, ma non riuscivo a trovare il Suo volo"
