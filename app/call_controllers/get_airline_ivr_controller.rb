@@ -9,7 +9,7 @@ class GetAirlineIVRController < Adhearsion::IVRController
     'SWA' => ['Southwest'],
     'BAW' => ['British Airways']
   }
-  prompts << "Say the name of your airline"
+  prompts << -> { t(:say_airline) }
 
   on_complete do |result|
     airline = result.interpretation[:airline]

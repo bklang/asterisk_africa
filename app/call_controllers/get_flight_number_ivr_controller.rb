@@ -3,7 +3,7 @@ require 'call_controllers/get_origin_city_ivr_controller'
 
 class GetFlightNumberIVRController < Adhearsion::IVRController
   include IVRHelpers
-  prompts << "Say your flight number"
+  prompts << -> { t(:say_flight_number) }
   
   def grammar_url
     [

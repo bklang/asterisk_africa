@@ -8,6 +8,10 @@ Adhearsion.router do
 
   # Specify your call routes, directing calls with particular attributes to a controller
   route 'Speak A Tweet', AsteriskAfricaTweetsCallController, to: /tweet/
+  route 'Check Flight Status in Italian', to: /flight-it/ do
+    call[:locale] = 'it'
+    pass GetAirlineIVRController
+  end
   route 'Check Flight Status', GetAirlineIVRController, to: /flight/
 
   route 'default' do

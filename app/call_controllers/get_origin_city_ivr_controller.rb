@@ -6,13 +6,14 @@ class GetOriginCityIVRController < Adhearsion::IVRController
   AIRPORTS = {
     'FAOR' => ['Johannesburg', 'Joeburg', 'O. R. Tambo International'],
   }
-  prompts << "Say the name of the city from which you are departing"
+  prompts << -> { t(:say_departure_city) }
 
   on_complete do |result|
     airport = result.interpretation[:airport]
-    logger.info "Selected airport #{airport}"
+    logger.debug "Selected airport #{airport}"
     
     ident = "#{metadata[:airline]}#{metadata[:fltnum]}"
+    logger.info "Searching for flight #{ident} departing from #{airport}"
     flights = FlightAware.get_data :flight_info, ident: ident
     
     flight = flights[:flight_info_results][:flight_info_result][:flights].detect do |flight|
@@ -22,10 +23,9 @@ class GetOriginCityIVRController < Adhearsion::IVRController
     if flight
       logger.warn flight.inspect
       #departure_time = DateTime.strptime flight[:filed_departuretime], "%s"
-
-      say "Your flight is leaving #{AIRPORTS[airport].first} for #{flight[:destination_name]}"
+      play success_message(AIRPORTS[airport].first, flight[:destination_name])
     else
-      say "Sorry, I could not find your flight."
+      say t(:could_not_find_flight)
     end
   end
 
@@ -51,6 +51,18 @@ class GetOriginCityIVRController < Adhearsion::IVRController
         end
       end
     end
+  end
+
+private
+
+  def success_message(from, to)
+    ssml = t(:flight_is_departing) +
+    RubySpeech::SSML.draw { string from } +
+    t(:for) +
+    RubySpeech::SSML.draw { string to }
+    # Workaround for https://github.com/benlangfeld/ruby_speech/issues/37
+    ssml['xml:lang'] = call[:locale]
+    ssml
   end
 end
 
