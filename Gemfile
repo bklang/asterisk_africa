@@ -22,6 +22,8 @@ gem 'reel-rack', '~> 0.2'
 gem 'sinatra', require: false
 gem 'sinatra-contrib', require: false
 
+gem 'adhearsion-reporter'
+
 # External data sources
 gem 'twitter', '< 5.0'
 gem 'savon' # For SOAP APIs
