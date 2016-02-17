@@ -19,7 +19,7 @@ class GetOriginCityIVRController < Adhearsion::IVRController
 
     if flight = find_flight_by_origin(flights, airport)
       logger.warn flight.inspect
-      #departure_time = DateTime.strptime flight[:filed_departuretime], "%s"
+      departure_time = DateTime.strptime flight[:filed_departuretime], "%s"
       play success_message(AIRPORTS[airport].first, flight[:destination_name])
     else
       say t(:could_not_find_flight)
@@ -52,17 +52,19 @@ class GetOriginCityIVRController < Adhearsion::IVRController
 
 private
 
-  def success_message(from, to)
   def find_flight_by_origin(flights, origin)
     flights[:flight_info_results][:flight_info_result][:flights].detect do |flight|
       flight[:origin] == origin
     end
   end
 
+  def success_message(from, to, time)
     ssml = t(:flight_is_departing) +
     RubySpeech::SSML.draw { string from } +
     t(:for) +
-    RubySpeech::SSML.draw { string to }
+    RubySpeech::SSML.draw { string to } +
+    t(:at_time) +
+    RubySpeech::SSML.draw { string time.strftime("%H:%M") }
     # Workaround for https://github.com/benlangfeld/ruby_speech/issues/37
     ssml['xml:lang'] = call[:locale]
     ssml

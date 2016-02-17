@@ -10,5 +10,7 @@ it:
     text: "Il volo è in partenza da"
   for:
     text: "da"
+  at_time:
+    text: "alle"
   could_not_find_flight:
     text: "Mi dispiace, ma non riuscivo a trovare il Suo volo"

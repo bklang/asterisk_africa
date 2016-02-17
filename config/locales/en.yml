@@ -10,5 +10,7 @@ en:
     text: "Your flight is departing"
   for:
     text: "for"
+  at_time:
+    text: "at"
   could_not_find_flight:
     text: "Sorry, I could not find your flight."
