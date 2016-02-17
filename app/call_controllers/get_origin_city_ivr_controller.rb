@@ -16,11 +16,8 @@ class GetOriginCityIVRController < Adhearsion::IVRController
     logger.info "Searching for flight #{ident} departing from #{airport}"
     flights = FlightAware.get_data :flight_info, ident: ident
     
-    flight = flights[:flight_info_results][:flight_info_result][:flights].detect do |flight|
-      flight[:origin] == airport
-    end
 
-    if flight
+    if flight = find_flight_by_origin(flights, airport)
       logger.warn flight.inspect
       #departure_time = DateTime.strptime flight[:filed_departuretime], "%s"
       play success_message(AIRPORTS[airport].first, flight[:destination_name])
@@ -56,6 +53,12 @@ class GetOriginCityIVRController < Adhearsion::IVRController
 private
 
   def success_message(from, to)
+  def find_flight_by_origin(flights, origin)
+    flights[:flight_info_results][:flight_info_result][:flights].detect do |flight|
+      flight[:origin] == origin
+    end
+  end
+
     ssml = t(:flight_is_departing) +
     RubySpeech::SSML.draw { string from } +
     t(:for) +
