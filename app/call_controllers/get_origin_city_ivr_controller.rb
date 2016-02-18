@@ -20,7 +20,7 @@ class GetOriginCityIVRController < Adhearsion::IVRController
     if flight = find_flight_by_origin(flights, airport)
       logger.warn flight.inspect
       departure_time = DateTime.strptime flight[:filed_departuretime], "%s"
-      play success_message(AIRPORTS[airport].first, flight[:destination_name])
+      play success_message(AIRPORTS[airport].first, flight[:destination_name], departure_time)
     else
       say t(:could_not_find_flight)
     end
