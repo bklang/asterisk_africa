@@ -14,6 +14,7 @@ class GetOriginCityIVRController < Adhearsion::IVRController
     
     ident = "#{metadata[:airline]}#{metadata[:fltnum]}"
     logger.info "Searching for flight #{ident} departing from #{airport}"
+    say t(:one_moment_please)
     flights = FlightAware.get_data :flight_info, ident: ident
     
 

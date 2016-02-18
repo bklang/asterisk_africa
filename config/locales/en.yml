@@ -12,5 +12,7 @@ en:
     text: "for"
   at_time:
     text: "at"
+  one_moment_please:
+    text: "One moment please."
   could_not_find_flight:
     text: "Sorry, I could not find your flight."

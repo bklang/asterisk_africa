@@ -12,5 +12,7 @@ it:
     text: "da"
   at_time:
     text: "alle"
+  one_moment_please:
+    text: "Un momento per piacere"
   could_not_find_flight:
     text: "Mi dispiace, ma non riuscivo a trovare il Suo volo"
